@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}注册{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="col-md-4 col-md-offset-4">
+<form class="froms-register" action="/register/" method="post" >
+    {% csrf_token %}
+    {% if message %}
+       <div class="alert alert-warning">{{ message }}</div>
+    {% endif %}
+    <h1 class="text-center">欢迎注册</h1>
+<div class="form-group">
+    {{ register_forms.username.label_tag }}
+    {{ register_forms.username}}
+
+    {{ register_forms.password.label_tag }}
+    {{ register_forms.password}}
+
+    {{ register_forms.is_password.label_tag }}
+    {{ register_forms.is_password}}
+
+    {{ register_forms.email.label_tag }}
+    {{ register_forms.email}}
+
+    {{ register_forms.sex.label_tag }}
+    {{ register_forms.sex}}
+</div>
+<div class="form-group">
+    {{ register_forms.captcha.errors }}
+    {{ register_forms.captcha.label_tag }}
+    {{ register_forms.captcha }}
+</div>
+<button type="reset"  class="btn btn-default pull-left" >重置</button>
+<button type="submit"  class="btn btn-default pull-right" >提交注册</button>
+</form>
+    </div>
+    </div>
+{% endblock %}
